@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/bloc/current_bloc.dart';
 import 'package:weather_app/ui/splash_page.dart';
 
 void main() {
@@ -10,6 +12,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: SplashPage());
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => CurrentBloc())],
+      child: MaterialApp(home: SplashPage()),
+    );
   }
 }
